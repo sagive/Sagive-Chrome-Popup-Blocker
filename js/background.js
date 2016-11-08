@@ -3,6 +3,10 @@ var blocked;
 var popAmount;
 
 
+// SET URLIST CLEAN OBJ IN CHROME STORAGE
+localStorage.setItem('sagiveUrlist', 'example.com');
+
+
 // SET BADGE TEXT ON LOAD
 chrome.browserAction.setBadgeBackgroundColor({color: "black"});
 chrome.browserAction.setBadgeText({text: "0"})
@@ -36,6 +40,30 @@ Array.prototype.contains = function ( needle ) {
 }
 
 
+
+// SAVE RECENT URL IN LOCALSTORAGE IN OBJ
+var catchNewUrl = function(curl){
+	
+	var current_time 	= '';
+	var current_url 	= curl;
+	var current_urlist	= localStorage.getItem('sagiveUrlist')
+	
+	
+	return{
+		createMember:function(){
+		  // [...]
+		},
+		getMemberDetails:function(){
+		  // [...]
+		}
+	}
+}();
+// catchNewUrl.createMember() and 
+// catchNewUrl.getMemberDetails() now works.
+
+
+
+
 // LISTEN TO NEW TAB or WINDOW OPEN
 chrome.webRequest.onBeforeRequest.addListener(
 
@@ -48,11 +76,15 @@ chrome.webRequest.onBeforeRequest.addListener(
 		
 		// close popup
 		if( blocked.contains(curl) ) {
-			chrome.tabs.remove(details.tabId);
-			curPopAmount = fixPopAmount();
-			console.log('popAmount: '+ curPopAmount);
-			chrome.browserAction.setBadgeText ( { text: String(curPopAmount) } );		// set badge number with every blocked popup
 			
+			// close popup tab
+			chrome.tabs.remove(details.tabId);
+			
+			// increased blocked count in textBadge
+			curPopAmount = fixPopAmount();
+			chrome.browserAction.setBadgeText ( { text: String(curPopAmount) } );
+			
+			// cancel load and halt (last action)
 			return {cancel: true};
 		}
 		

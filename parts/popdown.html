@@ -5,14 +5,16 @@
 	<link rel="stylesheet" type="text/css" href="../css/styles.css" media="all" />
 	
 
-<body>
+<body class="popdown-body">
 
 	<div class="container">
+		<h3>Sagive PopUp Blocker 0.0.1</h3>
+	
 		<div id="status" class="label label-danger"></div>		
 		
-		<div class="form-group"><label><input type="checkbox" id="onlineList" checked> Use Sagive Online List</label></div>
-		<div class="form-group"><textarea class="form-control" id="userList" rows="10" placeholder="one base url per line - ie: example.com"></textarea></div>
-		<div class="form-group"><button id="save" class="btn btn-danger btn-lg w100">Save Options</button></div>
+		<div class="form-group"><label><input type="checkbox" id="onlineList" checked> Load Online List <span class="label label-default">(soon)</span></label></div>
+		<div><textarea class="form-control" id="userList" rows="10" placeholder="one base url per line - ie: example.com"></textarea></div>
+		<div><button id="save" class="btn btn-danger btn-lg w100">Save Options</button></div>
 		
 		
 		<!--=== 10 RECENT URLS ===-->

@@ -1,0 +1,6 @@
+.dnone {display: none;}
+.form-control, .btn {.nobrad;}
+.container {width: 350px; max-width: 100%;}
+.btn {}
+
+.w100 {width: 100%; max-width: 100%;}

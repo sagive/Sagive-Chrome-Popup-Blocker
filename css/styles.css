@@ -1,11 +1,7 @@
-.dnone {display: none;}
-.form-control, .btn {-webkit-border-radius: 0; border-radius: 0;}
-.container {width: 350px; max-width: 100%;}
-.btn-danger {background: #ED493E;}
+.popdown-body .dnone {display: none;}
+.popdown-body .form-control, .popdown-body .btn {-webkit-border-radius: 0; border-radius: 0;}
+.popdown-body .container {width: 350px; max-width: 100%;}
+.popdown-body .btn-danger {background: #ED493E;}
 
-.w100 {width: 100%; max-width: 100%;}
-
-
-
-.popdown-body {background: #fff;
-}
+.popdown-body .w100 {width: 100%; max-width: 100%;}
+.popdown-body {background: #fff;}

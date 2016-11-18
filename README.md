@@ -16,3 +16,7 @@ If a tab or a window opens up (for any reason) with a url that exists in the lis
 0. The session in that tab / window would be canceled
 0. That tab / window would be closed automatically
 
+
+Why its great?
+-------
+becouse its a small addon that nobody know and thus nobody would block it or search for. Or.. simply put - it works!

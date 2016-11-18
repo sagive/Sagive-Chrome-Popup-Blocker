@@ -1,17 +1,23 @@
 {
+	// BASIC
 	"manifest_version": 2,
 	"name": "Sagive POPUP Blocker",
 	"version": "0.0.1",
 	"options_page": "parts/options.html",
+	
+	// VIEW DATA
 	"description": "An attempt to build a better simpler popup blocker",
 	"browser_action": {
 		"default_popup": "parts/popdown.html"
 	},
+	
 	"icons": { 
 		"16": "img/icon16.png",
 		"48": "img/icon48.png",
 		"128": "img/icon128.png" 
 	},
+	
+	// CONTENT SCRIPTS
 	"permissions": [
 		"storage",
 		"tabs",
@@ -23,11 +29,14 @@
 		"webRequestBlocking",
 		"*://*/*"
 	],
+	
+	// CONTENT SCRIPTS
 	"content_scripts": [{
 		"matches": ["http://*/*"],
 		"js": ["js/content.js"],
 		"css": ["css/styles.css"]
 	}],
+	
 	"background": {
 		"scripts": ["js/background.js"],
 		"persistent": true

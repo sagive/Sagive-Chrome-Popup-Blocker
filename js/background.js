@@ -25,9 +25,8 @@ function fixPopAmount() {
 // SPLIT USER URLS LIST INTO OBJ
 chrome.storage.sync.get("userList", function (obj) {
 	userList = obj['userList'];
-	blocked	= userList.split("\n");
+	if(userList) {blocked = userList.split("\n");}
 });
-
 
 
 // CHECK IF JAVASCRIPT ARRAY CONTAINS STRING
@@ -46,7 +45,7 @@ var catchNewUrl = function(curl){
 	
 	var current_time 	= '';
 	var current_url 	= curl;
-	var current_urlist	= localStorage.getItem('sagiveUrlist')
+	var current_urlist	= localStorage.getItem('sagiveUrlist');
 	
 	
 	return{
@@ -67,27 +66,34 @@ var catchNewUrl = function(curl){
 // LISTEN TO NEW TAB or WINDOW OPEN
 chrome.webRequest.onBeforeRequest.addListener(
 
+
+
 	function(details) {
-			
-		console.log(details.url);
 		
+		chrome.storage.sync.get("userList", function (obj) {
+			userList = obj['userList'];
+			if(userList) {blocked = userList.split("\n");} else {blocked = '';}
+		});
 		// get popup url
 		var curl = details.url;
 		
-		// close popup
-		if( blocked.contains(curl) ) {
-			
-			// close popup tab
-			chrome.tabs.remove(details.tabId);
-			
-			// increased blocked count in textBadge
-			curPopAmount = fixPopAmount();
-			chrome.browserAction.setBadgeText ( { text: String(curPopAmount) } );
-			
-			// cancel load and halt (last action)
-			return {cancel: true};
-		}
+		console.log(curl);
 		
+		// close popup
+		if(blocked) {
+			if( blocked.contains(curl) ) {
+				
+				// close popup tab
+				chrome.tabs.remove(details.tabId);
+				
+				// increased blocked count in textBadge
+				curPopAmount = fixPopAmount();
+				chrome.browserAction.setBadgeText ( { text: String(curPopAmount) } );
+				
+				// cancel load and halt (last action)
+				return {cancel: true};
+			}
+		}
 		
 		
 	},
@@ -96,9 +102,6 @@ chrome.webRequest.onBeforeRequest.addListener(
 	
 );
 
-
-
-	
 	
 function saveCloseData(){
 	console.log('RAN');

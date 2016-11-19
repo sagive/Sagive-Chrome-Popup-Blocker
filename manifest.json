@@ -1,7 +1,7 @@
 {
 	"manifest_version": 2,
 	"name": "Sagive POPUP Blocker",
-	"version": "0.0.2",
+	"version": "0.0.15",
 	"options_page": "parts/options.html",
 	"description": "An attempt to build a better simpler popup blocker",
 	"browser_action": {

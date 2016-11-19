@@ -5,3 +5,7 @@
 
 .popdown-body .w100 {width: 100%; max-width: 100%;}
 .popdown-body {background: #fff;}
+
+
+.popdown-body h3 {padding: 10px; margin: 0 0 20px; background: #ededed;}
+.popdown-body textarea {border: 1px solid #ed493e;}

@@ -34,8 +34,17 @@ document.addEventListener('DOMContentLoaded', restore_options);
 document.getElementById('save').addEventListener('click', save_options);
 
 
+function getAddonVersion() { 
+    var version = 'NaN'; 
+    var xhr = new XMLHttpRequest(); 
+    xhr.open('GET', chrome.extension.getURL('manifest.json'), false); 
+    xhr.send(null); 
+    var manifest = JSON.parse(xhr.responseText); 
 
+	document.getElementById("addonVer").textContent = manifest.version;
 
+} 
+getAddonVersion();
 
 	jQuery(document).ready(function($) {
 		
@@ -46,4 +55,7 @@ document.getElementById('save').addEventListener('click', save_options);
 			$(showthis).slideToggle('fast');
 		});	
 		
+		
+
 	});	
+	
